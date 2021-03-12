@@ -1,0 +1,24 @@
+# permissions for end users to edit flagsmiths.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: flagsmith-editor-role
+rules:
+- apiGroups:
+  - charts.flagsmith.com
+  resources:
+  - flagsmiths
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - charts.flagsmith.com
+  resources:
+  - flagsmiths/status
+  verbs:
+  - get

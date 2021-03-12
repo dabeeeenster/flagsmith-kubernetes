@@ -1,0 +1,19 @@
+{{- if .Values.openshift }}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ template "flagsmith.fullname" . }}-frontend
+  labels:
+    app: {{ template "flagsmith.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: {{ template "flagsmith.fullname" . }}-frontend
+    weight: 100
+  wildcardPolicy: None
+{{- end }}

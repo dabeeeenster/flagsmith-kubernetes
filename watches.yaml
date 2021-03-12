@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: charts.flagsmith.com
+  version: v1alpha1
+  kind: Flagsmith
+  chart: helm-charts/flagsmith
+# +kubebuilder:scaffold:watch
